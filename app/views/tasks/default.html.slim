@@ -33,7 +33,7 @@
                   = link_to "新規作成", new_task_path, class: "btn btn-success"
                 .col-md-6.text-right
                   - if @task.present? && !@task.new_record?
-                    = link_to "削除", task, data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger", method: :delete
+                    = link_to "削除", @task, data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger", method: :delete
             #content_pane.split-pane-component
               .pane-content
                 = bootstrap_flash
