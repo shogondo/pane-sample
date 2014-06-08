@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      task:
+        title: タイトル
+        description: 詳細
+        expiry_date: 期限

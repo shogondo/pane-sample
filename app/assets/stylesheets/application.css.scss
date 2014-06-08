@@ -1,0 +1,130 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require split-pane
+ *= require rails_bootstrap_forms
+ *= require_tree .
+ *= require_self
+ */
+
+$side_pane_width: 300px;
+$side_pane_min_width: 200px;
+$list_pane_height: 200px;
+$list_pane_min_height: 150px;
+$action_pane_height: 50px;
+$navbar_height: 50px;
+$pane_content_margin_length: 16px;
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.row {
+    margin: 0;
+}
+
+.col-lg-1, 
+.col-lg-2, 
+.col-lg-3, 
+.col-lg-4, 
+.col-lg-5, 
+.col-lg-6, 
+.col-lg-7, 
+.col-lg-8, 
+.col-lg-9, 
+.col-lg-10, 
+.col-lg-11, 
+.col-lg-12 {
+    padding: 0;
+} 
+
+.split-pane-frame {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: $navbar_height 0px 0px 0px;
+    //margin: $navbar_height 0px 0px 0px;
+    //padding: 0;
+}
+
+#side_pane {
+    width: $side_pane_width;
+    min-width: $side_pane_min_width;
+}
+
+.pane-content {
+    margin: $pane_content_margin_length;
+}
+
+.table.table-header-fixed {
+    margin: 0;
+    thead {
+        tr {
+        width: 100%;
+        float: left;
+        }
+    }
+    tbody {
+        width: 100%;
+        float: left;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+}
+
+.vertical-divider {
+    width: 4px;
+    left: $side_pane_width;
+}
+
+#main_pane {
+    left: $side_pane_width;
+    margin-left: 4px;
+}
+
+#list_pane {
+    height: $list_pane_height;
+    min-height: $list_pane_min_height;
+}
+
+.horizontal-divider {
+    height: 4px;
+    top: $list_pane_height;
+}
+
+#detail_pane {
+    top: $list_pane_height;
+    margin-top: 4px;
+}
+
+#action_pane {
+    height: $action_pane_height;
+    min-height: $action_pane_height;
+    margin-top: 10px;
+}
+
+#content_pane {
+    top: $action_pane_height;
+}
+
+.split-pane-divider {
+    background: #f0f0f0;
+}

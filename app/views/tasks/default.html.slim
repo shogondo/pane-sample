@@ -1,0 +1,51 @@
+.split-pane-frame
+  .split-pane.fixed-left
+    #side_pane.split-pane-component
+      .pane-content
+        ul.nav.nav-pills.nav-stacked
+          li.active
+            a href="#" タスク
+          - for index in (1..5)
+            li
+              a href="#" #{"メニュー%d" % index}
+    .split-pane-divider.vertical-divider
+    #main_pane.split-pane-component
+      .split-pane.fixed-top
+        #list_pane.split-pane-component
+          table.table
+            thead
+              tr
+                th width="30%" タイトル
+                th width="40%" 説明
+                th width="30%" 期限
+            tbody
+              - for task in @tasks
+                tr class="#{task == @task ? 'active' : ''}"
+                  td = link_to task.title, edit_task_path(task)
+                  td = truncate(task.description, length: 64)
+                  td = l task.expiry_date
+        .split-pane-divider.horizontal-divider
+        #detail_pane.split-pane-component
+          .split-pane.fixed-top
+            #action_pane.split-pane-component
+              .row
+                .col-md-6.text-left
+                  = link_to "新規作成", new_task_path, class: "btn btn-success"
+                .col-md-6.text-right
+                  - if @task.present? && !@task.new_record?
+                    = link_to "削除", task, data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger", method: :delete
+            #content_pane.split-pane-component
+              .pane-content
+                = bootstrap_flash
+                - if @task.present?
+                  .row
+                    .col-md-12
+                      = bootstrap_form_for @task,
+                          layout: :horizontal,
+                          label_col: "col-md-2 col-lg-2",
+                          control_col: "col-md-8 col-lg-8 col-md-offset-1 col-lg-offset-1" do |f|
+                        = f.text_field :title
+                        = f.text_area :description, rows: 3
+                        = f.date_select :expiry_date
+                        = f.form_group do
+                          = f.submit "保存", class: "btn btn-primary"
